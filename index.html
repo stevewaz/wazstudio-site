@@ -84,6 +84,33 @@
         min-height: 100vh;
         flex-direction: column;
       }
+      .app-card {
+        display: flex;
+        padding: 1.5em;
+        border: solid var(--border) 1px;
+        border-radius: 16px;
+        flex-direction: column;
+        gap: 12px;
+        background-color: var(--surface);
+      }
+      .app-card .badge {
+        padding: 4px 10px;
+        border-radius: 999px;
+        align-self: flex-start;
+        color: var(--primary);
+        font-size: 0.75rem;
+        font-weight: 600;
+        background-color: #2F4C811A;
+      }
+      .app-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      .app-card p {
+        color: var(--muted-text);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
       footer {
         display: flex;
         padding-top: 2em;
@@ -223,13 +250,22 @@
         font-size: 1.1rem;
         line-height: 1.6;
       }
+      .home {
+        display: flex;
+        width: 100%;
+        max-width: 1100px;
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+      }
       .page {
         display: flex;
         width: 100%;
         max-width: 700px;
-        padding: 8em 2em;
-        margin-left: auto;
-        margin-right: auto;
+        padding-top: 8em;
+        padding-bottom: 8em;
         flex-direction: column;
         gap: 16px;
       }
@@ -241,6 +277,27 @@
         color: var(--muted-text);
         font-size: 1.1rem;
         line-height: 1.6;
+      }
+      .apps {
+        display: flex;
+        padding-top: 3em;
+        padding-bottom: 3em;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .apps h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+      .apps .app-grid {
+        display: grid;
+        grid-template-columns: 1.0fr 1.0fr 1.0fr;
+        gap: 20px;
+      }
+      @media screen and (max-width: 700px) {
+        .home .apps .app-grid {
+          grid-template-columns: 1.0fr;
+        }
       }
     </style>
   </head>
@@ -259,7 +316,29 @@
             <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="var r=document.documentElement,n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);localStorage.setItem('wazstudio-theme',n);"><span class="icon-sun">☀</span><span class="icon-moon">☾</span></button>
           </div>
         </header>
-        <section class="page"><h1>Home</h1><p>Page content coming soon.</p></section>
+        <div class="home">
+          <section class="page"><h1>Home</h1><p>Page content coming soon.</p></section>
+          <section class="apps">
+            <h2>What we're building</h2>
+            <div class="app-grid">
+              <div class="app-card">
+                <span class="badge">Coming soon</span>
+                <h3>App One</h3>
+                <p>A short description of this app will go here once it's ready to announce.</p>
+              </div>
+              <div class="app-card">
+                <span class="badge">Coming soon</span>
+                <h3>App Two</h3>
+                <p>A short description of this app will go here once it's ready to announce.</p>
+              </div>
+              <div class="app-card">
+                <span class="badge">Coming soon</span>
+                <h3>App Three</h3>
+                <p>A short description of this app will go here once it's ready to announce.</p>
+              </div>
+            </div>
+          </section>
+        </div>
         <footer><p>© 2026 wazstudio</p></footer>
       </div>
     </div>
