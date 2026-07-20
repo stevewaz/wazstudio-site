@@ -3,20 +3,9 @@
   <head>
     <base href="/wazstudio-site/"/>
     <meta charset="utf-8"/>
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Roboto);
-      html, body {
-        width: 100%;
-        min-height: 100vh;
-        padding: 0;
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-      }
-      h1 {
-        margin: unset;
-        font-size: 4rem;
-      }
-    </style>
+    <script>
+      (function(){var s=localStorage.getItem('wazstudio-theme');var t=s||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();
+    </script>
     <!--$-->
     <title>wazstudio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,14 +13,43 @@
     <script src="main.client.dart.js" defer></script>
     <style>
       @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap);
+      :root {
+        --primary: #2F4C81;
+        --primary-dark: #1E3A66;
+        --bg: #F7F2E7;
+        --surface: #FFFFFF;
+        --border: #E6DFCE;
+        --text: #1B2A45;
+        --muted-text: #5B6B85;
+        --blob-blue: #5C7FB3;
+        --blob-green: #7FAE93;
+        --blob-terracotta: #C97256;
+        --blob-blend: multiply;
+        --blob-opacity: 0.6;
+      }
+      :root[data-theme="dark"] {
+        --primary: #7C9CDB;
+        --primary-dark: #9DB6E5;
+        --bg: #0A0A0F;
+        --surface: #15151F;
+        --border: #23232F;
+        --text: #F5F5F7;
+        --muted-text: #9CA3AF;
+        --blob-blue: #5C7FB3;
+        --blob-green: #7FAE93;
+        --blob-terracotta: #C97256;
+        --blob-blend: screen;
+        --blob-opacity: 0.35;
+      }
       html, body {
         width: 100%;
         min-height: 100vh;
         padding: 0;
         margin: 0;
-        color: #1B2A45;
+        color: var(--text);
         font-family: 'Inter', sans-serif;
-        background-color: #F7F2E7;
+        background-color: var(--bg);
+        transition: background-color 0.2s ease, color 0.2s ease;
       }
       * {
         box-sizing: border-box;
@@ -43,51 +61,40 @@
         margin: 0;
       }
       a {
-        color: #2F4C81;
+        color: var(--primary);
+      }
+      .theme-toggle .icon-moon {
+        display: none;
+      }
+      :root[data-theme="dark"] .theme-toggle .icon-sun {
+        display: none;
+      }
+      :root[data-theme="dark"] .theme-toggle .icon-moon {
+        display: block;
       }
       .main {
         display: flex;
         min-height: 100vh;
         flex-direction: column;
       }
-      .app-card {
+      .content {
         display: flex;
-        padding: 1.5em;
-        border: solid #E6DFCE 1px;
-        border-radius: 16px;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
         flex-direction: column;
-        gap: 12px;
-        background-color: #FFFFFF;
-      }
-      .app-card .badge {
-        padding: 4px 10px;
-        border-radius: 999px;
-        align-self: flex-start;
-        color: #2F4C81;
-        font-size: 0.75rem;
-        font-weight: 600;
-        background-color: #2F4C811A;
-      }
-      .app-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-      }
-      .app-card p {
-        color: #5B6B85;
-        font-size: 0.95rem;
-        line-height: 1.5;
       }
       footer {
         display: flex;
         padding-top: 2em;
         padding-bottom: 2em;
         border-top-style: solid;
-        border-top-color: #E6DFCE;
+        border-top-color: var(--border);
         border-top-width: 1px;
         justify-content: center;
       }
       footer p {
-        color: #5B6B85;
+        color: var(--muted-text);
         font-size: 0.875rem;
       }
       header {
@@ -111,12 +118,17 @@
         width: 24px;
         height: 24px;
         border-radius: 7px;
-        background-color: #2F4C81;
+        background-color: var(--primary);
       }
       header .brand span {
-        color: #1B2A45;
+        color: var(--text);
         font-size: 1.1rem;
         font-weight: 800;
+      }
+      header .nav-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
       header nav {
         display: flex;
@@ -125,185 +137,131 @@
       header nav a {
         display: flex;
         padding: 0.5em 1em;
-        color: #5B6B85;
+        color: var(--muted-text);
         font-weight: 500;
         text-decoration: none;
       }
       header nav a:hover {
-        color: #1B2A45;
+        color: var(--text);
       }
       header nav div.active a {
-        color: #1B2A45;
+        color: var(--text);
       }
-      .about {
+      header .theme-toggle {
         display: flex;
-        width: 100%;
-        max-width: 700px;
-        padding: 6em 2em;
-        margin-left: auto;
-        margin-right: auto;
-        flex-direction: column;
-        gap: 16px;
+        width: 36px;
+        height: 36px;
+        border: solid var(--border) 1px;
+        border-radius: 999px;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        background-color: var(--surface);
+        cursor: pointer;
       }
-      .about h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
+      header .theme-toggle:hover {
+        border-color: var(--primary);
       }
-      .about p {
-        color: #5B6B85;
-        font-size: 1.1rem;
-        line-height: 1.6;
-      }
-      .home {
-        display: flex;
-        width: 100%;
-        max-width: 1100px;
-        padding-left: 2em;
-        padding-right: 2em;
-        margin-left: auto;
-        margin-right: auto;
-        flex-direction: column;
-      }
-      .home .hero {
-        position: relative;
-        padding-top: 8em;
-        padding-bottom: 8em;
-        overflow: hidden;
-      }
-      .home .hero .hero-blobs {
-        position: absolute;
+      .watercolor-bg {
+        position: fixed;
         top: 0px;
         left: 0px;
         bottom: 0px;
         right: 0px;
         z-index: 0;
+        overflow: hidden;
         pointer-events: none;
       }
-      .home .hero .blob {
-        opacity: 0.6;
-        filter: blur(90px);
-        mix-blend-mode: multiply;
+      .watercolor-bg .blob {
+        opacity: var(--blob-opacity);
+        filter: blur(120px);
+        mix-blend-mode: var(--blob-blend);
       }
-      .home .hero .blob-blue {
+      .watercolor-bg .blob-blue {
         position: absolute;
-        top: -80px;
-        left: -100px;
-        width: 380px;
-        height: 380px;
+        top: -15vh;
+        left: -15vw;
+        width: 55vw;
+        height: 55vh;
         border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
-        background-color: #5C7FB3;
+        background-color: var(--blob-blue);
       }
-      .home .hero .blob-green {
+      .watercolor-bg .blob-green {
         position: absolute;
-        top: 40px;
-        left: 260px;
-        width: 340px;
-        height: 340px;
+        top: 20vh;
+        left: 35vw;
+        width: 45vw;
+        height: 45vh;
         border-radius: 30% 70% 30% 70% / 70% 30% 70% 30%;
-        background-color: #7FAE93;
+        background-color: var(--blob-green);
       }
-      .home .hero .blob-terracotta {
+      .watercolor-bg .blob-terracotta {
         position: absolute;
-        bottom: -100px;
-        right: -60px;
-        width: 400px;
-        height: 400px;
+        bottom: -20vh;
+        right: -10vw;
+        width: 50vw;
+        height: 50vh;
         border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%;
-        background-color: #C97256;
+        background-color: var(--blob-terracotta);
       }
-      .home .hero .hero-content {
+      .page {
         display: flex;
-        position: relative;
-        z-index: 1;
+        width: 100%;
+        max-width: 700px;
+        padding: 8em 2em;
+        margin-left: auto;
+        margin-right: auto;
         flex-direction: column;
         gap: 16px;
       }
-      .home .hero .hero-content .eyebrow {
-        color: #2F4C81;
-        font-size: 0.9rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-      }
-      .home .hero .hero-content h1 {
-        max-width: 700px;
-        font-size: 3rem;
+      .page h1 {
+        font-size: 2.5rem;
         font-weight: 800;
-        line-height: 1.15;
       }
-      .home .hero .hero-content .subtitle {
-        max-width: 560px;
-        color: #5B6B85;
-        font-size: 1.15rem;
+      .page p {
+        color: var(--muted-text);
+        font-size: 1.1rem;
         line-height: 1.6;
       }
-      .home .apps {
+      .page {
         display: flex;
-        padding-top: 3em;
-        padding-bottom: 3em;
+        width: 100%;
+        max-width: 700px;
+        padding: 8em 2em;
+        margin-left: auto;
+        margin-right: auto;
         flex-direction: column;
-        gap: 24px;
+        gap: 16px;
       }
-      .home .apps h2 {
-        font-size: 1.75rem;
-        font-weight: 700;
+      .page h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
       }
-      .home .apps .app-grid {
-        display: grid;
-        grid-template-columns: 1.0fr 1.0fr 1.0fr;
-        gap: 20px;
-      }
-      @media screen and (max-width: 700px) {
-        .home .hero .hero-content h1 {
-          font-size: 2.25rem;
-        }
-        .home .apps .app-grid {
-          grid-template-columns: 1.0fr;
-        }
+      .page p {
+        color: var(--muted-text);
+        font-size: 1.1rem;
+        line-height: 1.6;
       }
     </style>
   </head>
   <body>
     <div class="main">
-      <header>
-        <a class="brand" href="/"><div><div class="mark"></div><span>wazstudio</span></div></a>
-        <nav><div class="active"><a href="/">Home</a></div><div><a href="/about">About</a></div></nav>
-      </header>
-      <div class="home">
-        <section class="hero">
-          <div class="hero-blobs">
-            <div class="blob blob-blue"></div>
-            <div class="blob blob-green"></div>
-            <div class="blob blob-terracotta"></div>
-          </div>
-          <div class="hero-content">
-            <span class="eyebrow">wazstudio</span>
-            <h1>We build small, focused apps.</h1>
-            <p class="subtitle">A studio making well-crafted software, one app at a time. Here's what's in the works.</p>
-          </div>
-        </section>
-        <section class="apps">
-          <h2>What we're building</h2>
-          <div class="app-grid">
-            <div class="app-card">
-              <span class="badge">Coming soon</span>
-              <h3>App One</h3>
-              <p>A short description of this app will go here once it's ready to announce.</p>
-            </div>
-            <div class="app-card">
-              <span class="badge">Coming soon</span>
-              <h3>App Two</h3>
-              <p>A short description of this app will go here once it's ready to announce.</p>
-            </div>
-            <div class="app-card">
-              <span class="badge">Coming soon</span>
-              <h3>App Three</h3>
-              <p>A short description of this app will go here once it's ready to announce.</p>
-            </div>
-          </div>
-        </section>
+      <div class="watercolor-bg">
+        <div class="blob blob-blue"></div>
+        <div class="blob blob-green"></div>
+        <div class="blob blob-terracotta"></div>
       </div>
-      <footer><p>© 2026 wazstudio</p></footer>
+      <div class="content">
+        <header>
+          <a class="brand" href="/"><div><div class="mark"></div><span>wazstudio</span></div></a>
+          <div class="nav-group">
+            <nav><div class="active"><a href="/">Home</a></div><div><a href="/about">About</a></div></nav>
+            <button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick="var r=document.documentElement,n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);localStorage.setItem('wazstudio-theme',n);"><span class="icon-sun">☀</span><span class="icon-moon">☾</span></button>
+          </div>
+        </header>
+        <section class="page"><h1>Home</h1><p>Page content coming soon.</p></section>
+        <footer><p>© 2026 wazstudio</p></footer>
+      </div>
     </div>
   </body>
 </html>

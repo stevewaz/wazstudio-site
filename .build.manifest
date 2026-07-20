@@ -18,9 +18,9 @@ packages/vm_service/DEPENDENCIES.md
 packages/vm_service/src/DEPENDENCIES.md
 packages/vm_service/src/README.md
 packages/wazstudio/app.styles.json
-packages/wazstudio/components/app_card.styles.json
 packages/wazstudio/components/footer.styles.json
 packages/wazstudio/components/header.styles.json
+packages/wazstudio/components/watercolor_background.styles.json
 packages/wazstudio/constants/theme.styles.json
 packages/wazstudio/pages/about.styles.json
 packages/wazstudio/pages/home.styles.json
