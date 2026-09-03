@@ -1,13 +1,23 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Screenshots from '../components/Screenshots.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import Download from '../components/Download.astro';
+import Footer from '../components/Footer.astro';
 ---
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>WazStudio</title>
-	</head>
-	<body>
-		<h1>WazStudio</h1>
-		<p>Site rebuilt with Astro.</p>
-	</body>
-</html>
+<Layout title="WazStudio — a small app that does one thing well">
+	<Header />
+	<main>
+		<Hero />
+		<Features />
+		<Screenshots />
+		<Pricing />
+		<Faq />
+		<Download />
+	</main>
+	<Footer />
+</Layout>
