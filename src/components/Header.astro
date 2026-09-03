@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 interface Props {
 	back?: boolean;
 }
@@ -12,22 +14,26 @@ const base = import.meta.env.BASE_URL;
 			<span>WazStudio</span>
 		</a>
 		{back ? (
-			<a href={base} class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
-				&larr; All apps
-			</a>
+			<div class="flex items-center gap-4">
+				<a href={base} class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+					&larr; All apps
+				</a>
+				<ThemeToggle />
+			</div>
 		) : (
-			<>
+			<div class="flex items-center gap-4">
 				<nav class="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex dark:text-slate-300">
 					<a href="#apps" class="transition hover:text-slate-900 dark:hover:text-white">Apps</a>
 					<a href="#about" class="transition hover:text-slate-900 dark:hover:text-white">About</a>
 				</nav>
+				<ThemeToggle />
 				<a
 					href="#apps"
 					class="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
 				>
 					See the apps
 				</a>
-			</>
+			</div>
 		)}
 	</div>
 </header>
