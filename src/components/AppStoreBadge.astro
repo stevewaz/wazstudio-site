@@ -1,0 +1,18 @@
+---
+interface Props {
+	href: string;
+}
+const { href } = Astro.props;
+---
+<a
+	href={href}
+	class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+		<path d="M16.365 1.43c0 1.14-.463 2.14-1.24 2.9-.84.82-2.13 1.45-3.19 1.36-.14-1.09.46-2.24 1.19-2.96.83-.84 2.23-1.46 3.24-1.3zM20.5 17.1c-.53 1.22-.78 1.77-1.46 2.85-.95 1.5-2.28 3.37-3.94 3.39-1.47.02-1.85-.96-3.85-.95-2 .01-2.42.97-3.9.95-1.66-.02-2.92-1.71-3.87-3.2-2.65-4.1-2.93-8.92-1.29-11.48 1.16-1.83 3-2.9 4.73-2.9 1.76 0 2.87 1 4.32 1 1.41 0 2.28-1 4.33-1 1.55 0 3.19.85 4.35 2.31-3.82 2.09-3.2 7.53-.42 9.03z" />
+	</svg>
+	<span class="text-left leading-tight">
+		<span class="block text-[10px]">Download on the</span>
+		<span class="block text-sm font-semibold">App Store</span>
+	</span>
+</a>

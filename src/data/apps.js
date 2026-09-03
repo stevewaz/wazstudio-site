@@ -1,0 +1,81 @@
+// Placeholder app lineup — replace with real apps, copy, and store links.
+export const apps = [
+	{
+		slug: 'app-one',
+		name: 'App One',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#6366f1',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+	{
+		slug: 'app-two',
+		name: 'App Two',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#0ea5e9',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+	{
+		slug: 'app-three',
+		name: 'App Three',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#f97316',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+	{
+		slug: 'app-four',
+		name: 'App Four',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#22c55e',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+	{
+		slug: 'app-five',
+		name: 'App Five',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#ec4899',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+	{
+		slug: 'app-six',
+		name: 'App Six',
+		tagline: 'A short, honest description of what this app does.',
+		accent: '#a855f7',
+		appStoreUrl: '#',
+		features: [
+			{ title: 'Feature one', description: 'A sentence describing the first thing this app is good at.' },
+			{ title: 'Feature two', description: 'A sentence describing the second thing this app is good at.' },
+			{ title: 'Feature three', description: 'A sentence describing the third thing this app is good at.' },
+		],
+		screenshots: ['Home screen', 'Detail view', 'Settings'],
+	},
+];

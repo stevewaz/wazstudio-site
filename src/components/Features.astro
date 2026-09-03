@@ -1,35 +1,20 @@
 ---
-const features = [
-	{
-		title: 'Fast by default',
-		description: 'Native performance with no lag, no spinners, no waiting on a server that might be down.',
-		icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-	},
-	{
-		title: 'Works offline',
-		description: 'Your data lives on your device first. The app keeps working with no connection at all.',
-		icon: 'M5 12h14M12 5v14',
-	},
-	{
-		title: 'Privacy respected',
-		description: 'No tracking, no ad networks, no selling your data. What you do in the app stays yours.',
-		icon: 'M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z',
-	},
-	{
-		title: 'One-time price',
-		description: 'Pay once, own it forever. No subscription creeping onto your card every month.',
-		icon: 'M12 8c-1.66 0-3 .9-3 2s1.34 2 3 2 3 .9 3 2-1.34 2-3 2m0-8v8m0-10v2m0 8v2',
-	},
-	{
-		title: 'Built with care',
-		description: "Made by one person who uses it every day, so bugs get fixed and ideas get shipped fast.",
-		icon: 'M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21l-7.682-8.318a4.5 4.5 0 010-6.364z',
-	},
-	{
-		title: 'Regular updates',
-		description: 'Small, steady improvements based on real feedback instead of a yearly redesign.',
-		icon: 'M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0114-5.3M20 14a8 8 0 01-14 5.3',
-	},
+interface Feature {
+	title: string;
+	description: string;
+}
+interface Props {
+	features: Feature[];
+}
+const { features } = Astro.props;
+
+const icons = [
+	'M13 10V3L4 14h7v7l9-11h-7z',
+	'M5 12h14M12 5v14',
+	'M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z',
+	'M12 8c-1.66 0-3 .9-3 2s1.34 2 3 2 3 .9 3 2-1.34 2-3 2m0-8v8m0-10v2m0 8v2',
+	'M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21l-7.682-8.318a4.5 4.5 0 010-6.364z',
+	'M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0114-5.3M20 14a8 8 0 01-14 5.3',
 ];
 ---
 <section id="features" class="mx-auto max-w-6xl px-6 py-24">
@@ -40,11 +25,11 @@ const features = [
 		</p>
 	</div>
 	<div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-		{features.map((feature) => (
+		{features.map((feature, i) => (
 			<div class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
 				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-500 dark:bg-indigo-500/10">
 					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-						<path stroke-linecap="round" stroke-linejoin="round" d={feature.icon} />
+						<path stroke-linecap="round" stroke-linejoin="round" d={icons[i % icons.length]} />
 					</svg>
 				</div>
 				<h3 class="mt-4 font-semibold">{feature.title}</h3>

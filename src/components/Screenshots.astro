@@ -1,5 +1,8 @@
 ---
-const shots = ['Home screen', 'Detail view', 'Settings'];
+interface Props {
+	shots: string[];
+}
+const { shots } = Astro.props;
 ---
 <section id="screenshots" class="border-y border-slate-200 bg-slate-50 py-24 dark:border-slate-800 dark:bg-slate-900/40">
 	<div class="mx-auto max-w-6xl px-6">

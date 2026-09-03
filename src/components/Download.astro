@@ -1,24 +1,20 @@
 ---
+import AppStoreBadge from './AppStoreBadge.astro';
+
+interface Props {
+	name: string;
+	appStoreUrl: string;
+}
+const { name, appStoreUrl } = Astro.props;
 ---
 <section id="download" class="mx-auto max-w-4xl px-6 pb-24">
 	<div class="rounded-3xl bg-slate-900 px-8 py-16 text-center text-white dark:bg-white dark:text-slate-900">
-		<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Ready to try it?</h2>
+		<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Ready to try {name}?</h2>
 		<p class="mx-auto mt-4 max-w-xl text-slate-300 dark:text-slate-600">
-			Download the app and see for yourself. Free to start, no account required.
+			Download it from the App Store and see for yourself.
 		</p>
 		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-			<a
-				href="#"
-				class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-700"
-			>
-				Download for macOS
-			</a>
-			<a
-				href="#"
-				class="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60 dark:border-slate-900/30 dark:text-slate-900 dark:hover:border-slate-900/60"
-			>
-				Download for iOS
-			</a>
+			<AppStoreBadge href={appStoreUrl} />
 		</div>
 	</div>
 </section>

@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import AppHero from '../../components/AppHero.astro';
+import Features from '../../components/Features.astro';
+import Screenshots from '../../components/Screenshots.astro';
+import Download from '../../components/Download.astro';
+import Footer from '../../components/Footer.astro';
+import { apps } from '../../data/apps.js';
+
+export function getStaticPaths() {
+	return apps.map((app) => ({
+		params: { slug: app.slug },
+		props: { app },
+	}));
+}
+
+const { app } = Astro.props;
+---
+<Layout title={`${app.name} — WazStudio`} description={app.tagline}>
+	<Header back />
+	<main>
+		<AppHero name={app.name} tagline={app.tagline} accent={app.accent} appStoreUrl={app.appStoreUrl} />
+		<Features features={app.features} />
+		<Screenshots shots={app.screenshots} />
+		<Download name={app.name} appStoreUrl={app.appStoreUrl} />
+	</main>
+	<Footer />
+</Layout>
